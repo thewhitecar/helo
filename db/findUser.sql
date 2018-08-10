@@ -1,5 +1,5 @@
 SELECT *
 FROM users
 WHERE
-username = ${username} AND
-password = ${password};
+username = $1 AND
+password = $2;

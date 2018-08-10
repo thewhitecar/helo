@@ -5,6 +5,7 @@ module.exports = {
         let db = req.app.get('db');
         let {username, password} = req.body;
         db.createUser(username, password).then(response => {
+            let id = req.session.id
             res.status(200).send(response)
         })
     },
@@ -13,7 +14,7 @@ module.exports = {
     login: (req, res) => {
         let db = req.app.get('db');
         let {username, password} = req.body;
-        db.getUser().then(response => {
+        db.findUser(username, password).then(response => {
             res.status(200).send(response)
         })
     }
