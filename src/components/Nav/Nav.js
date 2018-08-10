@@ -15,6 +15,12 @@ handleLogout = () => {
         this.props.returnToDefault();
 })}
 
+componentDidMount(){
+    axios.get('/api/auth/me/').then(response => {
+        this.props.getUser(response.data[0].id, response.data[0].username,response.data[0].profile_pic)
+    })
+}
+
 render(){
 
         return(

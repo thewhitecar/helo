@@ -10,7 +10,7 @@ module.exports = {
             res.status(200).send(response)
         })
     },
-    // session.user.id=id
+
 
     login: (req, res) => {
         const {session} = req;
