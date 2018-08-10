@@ -6,6 +6,7 @@ export default class Dashboard extends Component{
         this.state={
             search:"",
             list:"",
+            posts: []
         }
 
         this.handleSearchChange = this.handleSearchChange.bind(this)
@@ -16,12 +17,14 @@ export default class Dashboard extends Component{
             search: e.target.value
         })
     }
-    render(){
+    render(){s
         return (
         <div>
             <input type="text" placeholder="search" value={this.state.search} onChange={this.handleSearchChange}/>
             <button>Search</button>
             <button>Reset</button>
+            <div>
+            </div>
         </div>
         )
     }

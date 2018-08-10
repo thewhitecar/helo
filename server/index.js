@@ -6,6 +6,7 @@ const session = require('express-session')
 const app = express();
 const port = process.env.PORT || 4000;
 const user = require('./userController');
+const post = require('./postController')
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -21,6 +22,9 @@ massive(process.env.CONNECTION_STRING).then(db => {
 app.use(bodyParser.json())
 
 
+app.get('api/posts/:id', post.getAll)
+
+
 
 app.post('/api/user', user.register)
 app.post('/api/login', user.login)
@@ -29,7 +33,7 @@ app.post('/api/auth/logout', (req, res) => {
     res.sendStatus(200)
 })
 
-
+app.get('api/auth/me', user.findByUserId)
 
 
 app.listen(port, () => {
