@@ -19,7 +19,6 @@ class Auth extends Component {
 
     }
 
-    
 
     handleUsernameInput(e) {
         this.setState({
@@ -38,8 +37,10 @@ class Auth extends Component {
         let password = this.state.password;
         let obj = {username, password}
         axios.post('/api/user', obj).then(response => {
+
             this.props.getUser(response.data[0].id, response.data[0].username,response.data[0].profile_pic)
             this.props.history.push("/dashboard")
+
         })
     }
 

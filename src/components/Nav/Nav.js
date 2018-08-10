@@ -10,17 +10,10 @@ class Nav extends Component {
         super(props)
     }
 
-    // handleClick =()=> {
-    //     axios.get('api/auth/me', id).then(response => {
-    //         this.props.getUser(response.data[0].username,response.data[0].profile_pic)
-    //     })
-    // }
-
-    handleLogout =() => {
-        axios.post('/api/auth/logout').then(response => {
-            this.props.returnToDefault()
-        })
-    }
+handleLogout = () => {
+    axios.post('/api/auth/logout').then(response => {
+        this.props.returnToDefault();
+})}
 
 render(){
 

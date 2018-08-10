@@ -17,7 +17,7 @@ export default class Dashboard extends Component{
             search: e.target.value
         })
     }
-    render(){s
+    render(){
         return (
         <div>
             <input type="text" placeholder="search" value={this.state.search} onChange={this.handleSearchChange}/>

@@ -10,7 +10,7 @@ const post = require('./postController')
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: false,
+    saveUninitialized: true,
     resave: false
 }))
 
@@ -22,15 +22,16 @@ massive(process.env.CONNECTION_STRING).then(db => {
 app.use(bodyParser.json())
 
 
-app.get('api/posts/:id', post.getAll)
+// app.get('api/posts/:id', post.getAll)
 
 
 
 app.post('/api/user', user.register)
 app.post('/api/login', user.login)
 app.post('/api/auth/logout', (req, res) => {
-    req.session.destroy()
-    res.sendStatus(200)
+    const {session} = req;
+    session.destroy();
+    res.status(200).send(req.session)
 })
 
 app.get('api/auth/me', user.findByUserId)
